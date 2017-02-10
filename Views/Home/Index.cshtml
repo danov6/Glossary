@@ -1,0 +1,44 @@
+﻿@model List<NewGlossary.Context.Table>
+
+
+@{
+    ViewBag.Title = "Home";
+}
+
+<h2>Glossary</h2>
+
+<p>
+    @Html.ActionLink("Add Entry", "Create")
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            Term
+        </th>
+        <th>
+            Definition
+        </th>
+        <th>
+
+        </th>
+    </tr>
+    @if (Model != null)
+    {
+        foreach (var entry in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => entry.Term)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => entry.Definition)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = entry.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = entry.Id })
+                </td>
+            </tr>
+        }
+    }
+</table>
